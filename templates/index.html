@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ta">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>தசா புத்தி கணக்கீடு</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="religious-header">
+            <img src="{{ url_for('static', filename='Thiruman.jpg') }}" alt="Thiruman" class="header-img">
+
+            <div class="cantation-grid">
+                <!-- Tamil Column -->
+                <div class="lang-col tamil">
+                    <p>
+                        ஶ்ரீ:<br>
+                        ஶ்ரீமதே நம:<br>
+                        ஸ்ரீமதே ராமானுஜாய நம:<br>
+                        ஸ்ரீமதே வர வர முநயே நமஹ:<br>
+                        ஸ்ரீ ஸ்ரீநிவாச மஹா குரவே நமஹ:<br>
+                        எம்பெருமானார் திருவடிகளே சரணம்!<br>
+                        ஆழ்வார் எம்பெருமானார் ஜீயர் திருவடிகளே சரணம்!!
+                    </p>
+                </div>
+
+                <!-- Sanskrit Column -->
+                <div class="lang-col sanskrit">
+                    <p>
+                        श्रीः<br>
+                        श्रीमते नमः<br>
+                        श्रीमते रामानुजाय नमः<br>
+                        श्रीमते वर वर मुनये नमः<br>
+                        श्री श्रीनिवास महागुरवे नमः
+                    </p>
+                </div>
+
+                <!-- English Column -->
+                <div class="lang-col english">
+                    <p>
+                        Sri:<br>
+                        SriMathe Namaha:<br>
+                        SriMathe Ramanujaya Namaha:<br>
+                        Srimathe Vara Vara Munaye Namaha:<br>
+                        Sri Srinivasa Mahaguravae Namaha:<br>
+                        Emperumanar Thiruvadigale Saranam!<br>
+                        Azhwar Emperumanar Jeeyar Thiruvadigale Saranam!!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <header>
+            <h1>🌟 தற்போதைய தசா புத்தி அறிக்கை</h1>
+            <p>உங்கள் ஜோதிடக் கணக்கீடுகளுக்கு மிகவும் துல்லியமான முடிவுகளைக் கண்டறியவும்.</p>
+        </header>
+
+        <div class="card">
+            <h2>📝 உங்கள் விவரங்களை உள்ளிடவும்</h2>
+            <div class="form-group">
+                <label>1. பெயர் (Name)</label>
+                <input type="text" id="name" placeholder="உங்கள் பெயர் (Your Name)" value="">
+            </div>
+            <div class="form-group">
+                <label>2. பிறந்த தேதி (Date of Birth)</label>
+                <input type="text" id="date" placeholder="DD/MM/YYYY" value="20/05/1992">
+            </div>
+            <div class="form-group">
+                <label>3. பிறந்த நேரம் (Time of Birth)</label>
+                <input type="text" id="time" placeholder="HH:MM (24 மணி நேரம்)" value="20:00">
+            </div>
+            <div class="form-group">
+                <label>4. பிறந்த இடம் (Place of Birth)</label>
+                <input type="text" id="place" placeholder="நகரம் / நாடு" value="Chennai, India">
+            </div>
+
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="manualArgs" onchange="toggleManual()">
+                <label for="manualArgs">எனக்கு இருப்பு தசை விவரம் தெரியும் (I know the Balance Dasa)</label>
+            </div>
+
+            <div id="manual-inputs" class="hidden">
+                <div class="form-group">
+                    <label>பிறந்த நட்சத்திரம் (Jenma Nakshatram):</label>
+                    <select id="manual_star" onchange="updateStartingDasa()">
+                        <option value="">-- Select Star --</option>
+                        <option value="Ashwini">Ashwini - அஸ்வினி</option>
+                        <option value="Bharani">Bharani - பரணி</option>
+                        <option value="Krittika">Krittika - கார்த்திகை</option>
+                        <option value="Rohini">Rohini - ரோகிணி</option>
+                        <option value="Mrigashirsha">Mrigashirsha - மிருகசீரிடம்</option>
+                        <option value="Ardra">Ardra - திருவாதிரை</option>
+                        <option value="Punarvasu">Punarvasu - புனர்பூசம்</option>
+                        <option value="Pushya">Pushya - பூசம்</option>
+                        <option value="Ashlesha">Ashlesha - ஆயில்யம்</option>
+                        <option value="Magha">Magha - மகம்</option>
+                        <option value="Purva Phalguni">Purva Phalguni - பூரம்</option>
+                        <option value="Uttara Phalguni">Uttara Phalguni - உத்திரம்</option>
+                        <option value="Hasta">Hasta - ஹஸ்தம்</option>
+                        <option value="Chitra">Chitra - சித்திரை</option>
+                        <option value="Swati">Swati - சுவாதி</option>
+                        <option value="Vishakha">Vishakha - விசாகம்</option>
+                        <option value="Anuradha">Anuradha - அனுஷம்</option>
+                        <option value="Jyeshtha">Jyeshtha - கேட்டை</option>
+                        <option value="Mula">Mula - மூலம்</option>
+                        <option value="Purva Ashadha">Purva Ashadha - பூராடம்</option>
+                        <option value="Uttara Ashadha">Uttara Ashadha - உத்திராடம்</option>
+                        <option value="Shravana">Shravana - திருவோணம்</option>
+                        <option value="Dhanishta">Dhanishta - அவிட்டம்</option>
+                        <option value="Shatabhisha">Shatabhisha - சதயம்</option>
+                        <option value="Purva Bhadrapada">Purva Bhadrapada - பூரட்டாதி</option>
+                        <option value="Uttara Bhadrapada">Uttara Bhadrapada - உத்திரட்டாதி</option>
+                        <option value="Revati">Revati - ரேவதி</option>
+                    </select>
+                </div>
+
+                <p id="starting-dasa" class="starting-dasa hidden" aria-live="polite"></p>
+                <label>தசை இருப்பு (Balance at Birth):</label>
+                <div class="row">
+                    <input type="number" id="bal_y" placeholder="ஆண்டுகள் (Years)" min="0">
+                    <input type="number" id="bal_m" placeholder="மாதங்கள் (Months)" min="0" max="11">
+                    <input type="number" id="bal_d" placeholder="நாட்கள் (Days)" min="0" max="30">
+                </div>
+            </div>
+            <button onclick="calculate()">🚀 உங்கள் முடிவுகளைக் காண்க</button>
+        </div>
+
+        <div id="result" class="card result-card hidden">
+            <h2>✨ கணக்கிடப்பட்ட பலன்கள்</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>விவரம் (Detail)</th>
+                        <th>முடிவுகள் (Calculated Output)</th>
+                    </tr>
+                </thead>
+                <tbody id="result-body">
+                    <!-- Results will be injected here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function toggleManual() {
+            const manualInputs = document.getElementById('manual-inputs');
+            manualInputs.classList.toggle('hidden');
+        }
+
+        function updateStartingDasa() {
+            const nakshatras = [
+                'Ashwini', 'Bharani', 'Krittika', 'Rohini', 'Mrigashirsha', 'Ardra',
+                'Punarvasu', 'Pushya', 'Ashlesha', 'Magha', 'Purva Phalguni', 'Uttara Phalguni',
+                'Hasta', 'Chitra', 'Swati', 'Vishakha', 'Anuradha', 'Jyeshtha',
+                'Mula', 'Purva Ashadha', 'Uttara Ashadha', 'Shravana', 'Dhanishta',
+                'Shatabhisha', 'Purva Bhadrapada', 'Uttara Bhadrapada', 'Revati'
+            ];
+            const dasas = [
+                ['Ketu', 'கேது'], ['Venus', 'சுக்கிரன்'], ['Sun', 'சூரியன்'],
+                ['Moon', 'சந்திரன்'], ['Mars', 'செவ்வாய்'], ['Rahu', 'ராகு'],
+                ['Jupiter', 'குரு'], ['Saturn', 'சனி'], ['Mercury', 'புதன்']
+            ];
+            const selectedStar = document.getElementById('manual_star').value;
+            const display = document.getElementById('starting-dasa');
+
+            if (!selectedStar) {
+                display.textContent = '';
+                display.classList.add('hidden');
+                return;
+            }
+
+            const dasa = dasas[nakshatras.indexOf(selectedStar) % dasas.length];
+            display.textContent = `ஆரம்ப தசை (Starting Dasa): ${dasa[1]} (${dasa[0]})`;
+            display.classList.remove('hidden');
+        }
+
+        async function calculate() {
+            const name = document.getElementById('name').value || 'குறிப்பிடப்படவில்லை';
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const place = document.getElementById('place').value;
+
+            const isManual = document.getElementById('manualArgs').checked;
+            let manualBalance = null;
+
+            if (isManual) {
+                manualBalance = {
+                    star: document.getElementById('manual_star').value,
+                    years: parseInt(document.getElementById('bal_y').value) || 0,
+                    months: parseInt(document.getElementById('bal_m').value) || 0,
+                    days: parseInt(document.getElementById('bal_d').value) || 0
+                };
+            }
+
+            const btn = document.querySelector('button');
+            btn.innerText = 'கணக்கிடுகிறது...';
+
+            try {
+                const response = await fetch('/calculate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ date, time, place, manual_balance: manualBalance })
+                });
+
+                const data = await response.json();
+
+                if (data.error) {
+                    alert('Error: ' + data.error);
+                } else {
+                    const resultBody = document.getElementById('result-body');
+                    resultBody.innerHTML = `
+                        <tr><td>பெயர்</td><td>${name}</td></tr>
+                        <tr><td>தற்போதைய தேதி</td><td>${data.date}</td></tr>
+                        <tr><td>நடப்பு வயது</td><td>${data.current_age}</td></tr>
+                        <tr><td>பிறந்த நட்சத்திரம்</td><td>${data.nakshatra}</td></tr>
+                        <tr><td>ஆரம்ப தசை மற்றும் இருப்பு</td><td>${data.start_dasa} தசை: ${data.balance}</td></tr>
+                        <tr><td>தற்போது நடக்கும் தசை</td><td>${data.current_dasa} தசை</td></tr>
+                        <tr><td>தசை முடிவு</td><td>${data.current_dasa_end}</td></tr>
+                        <tr><td>தற்போது நடக்கும் புத்தி</td><td>${data.current_bhukti} புத்தி</td></tr>
+                        <tr><td>புத்தி முடிவு</td><td>${data.current_bhukti_end}</td></tr>
+                        <tr>
+                            <td colspan="2">
+                                <strong>கடந்த தசை (Previous Dasa): ${data.prev_dasa}</strong><br>
+                                <table style="width:100%; margin-top:10px; border-collapse: collapse; opacity: 0.8;">
+                                    <tr>
+                                        <th style="border: 1px solid #ddd; padding: 5px; background: #e9e9e9; color: #555;">புத்தி</th>
+                                        <th style="border: 1px solid #ddd; padding: 5px; background: #e9e9e9; color: #555;">ஆரம்பம்</th>
+                                        <th style="border: 1px solid #ddd; padding: 5px; background: #e9e9e9; color: #555;">முடிவு</th>
+                                    </tr>
+                                    ${data.prev_all_bhuktis.map(b => `
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 5px;">${b.bhukti}</td>
+                                        <td style="border: 1px solid #ddd; padding: 5px;">${b.start}</td>
+                                        <td style="border: 1px solid #ddd; padding: 5px;">${b.end}</td>
+                                    </tr>
+                                    `).join('')}
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <strong style="color: #d35400;">நடப்பு தசை (Current Dasa): ${data.current_dasa}</strong><br>
+                                <table style="width:100%; margin-top:10px; border-collapse: collapse;">
+                                    <tr>
+                                        <th style="border: 1px solid #ddd; padding: 5px; background: #f9f9f9; color: #333;">புத்தி</th>
+                                        <th style="border: 1px solid #ddd; padding: 5px; background: #f9f9f9; color: #333;">ஆரம்பம்</th>
+                                        <th style="border: 1px solid #ddd; padding: 5px; background: #f9f9f9; color: #333;">முடிவு</th>
+                                    </tr>
+                                    ${data.all_bhuktis.map(b => `
+                                    <tr ${b.bhukti === data.current_bhukti ? 'style="background-color:#ffe8cc; font-weight:bold;"' : ''}>
+                                        <td style="border: 1px solid #ddd; padding: 5px;">${b.bhukti}</td>
+                                        <td style="border: 1px solid #ddd; padding: 5px;">${b.start}</td>
+                                        <td style="border: 1px solid #ddd; padding: 5px;">${b.end}</td>
+                                    </tr>
+                                    `).join('')}
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <strong>அடுத்த தசை (Next Dasa): ${data.next_dasa}</strong><br>
+                                <table style="width:100%; margin-top:10px; border-collapse: collapse; opacity: 0.8;">
+                                    <tr>
+                                        <th style="border: 1px solid #ddd; padding: 5px; background: #e9e9e9; color: #555;">புத்தி</th>
+                                        <th style="border: 1px solid #ddd; padding: 5px; background: #e9e9e9; color: #555;">ஆரம்பம்</th>
+                                        <th style="border: 1px solid #ddd; padding: 5px; background: #e9e9e9; color: #555;">முடிவு</th>
+                                    </tr>
+                                    ${data.next_all_bhuktis.map(b => `
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 5px;">${b.bhukti}</td>
+                                        <td style="border: 1px solid #ddd; padding: 5px;">${b.start}</td>
+                                        <td style="border: 1px solid #ddd; padding: 5px;">${b.end}</td>
+                                    </tr>
+                                    `).join('')}
+                                </table>
+                            </td>
+                        </tr>
+                        <tr><td>பொதுவான பலன் (General Prediction)</td><td>${data.prediction}</td></tr>
+                    `;
+                    document.getElementById('result').classList.remove('hidden');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Failed to calculate');
+            } finally {
+                btn.innerText = '🚀 உங்கள் முடிவுகளைக் காண்க';
+            }
+        }
+    </script>
+    <div class="religious-footer">
+        <p style="font-size: 0.95rem; opacity: 0.85; margin: 0;">
+            Any clarifications please contact : Priyavathsan S : Call/WhatsApp : <a href="https://wa.me/919486483808" style="color: var(--primary-dark); text-decoration: underline;" target="_blank">+91-9486483808</a>
+        </p>
+    </div>
+</body>
+
+</html>
